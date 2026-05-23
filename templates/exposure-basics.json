@@ -1,0 +1,31 @@
+{
+  "id": "exposure-basics",
+  "info": {
+    "name": "Common Exposed Files",
+    "severity": "HIGH"
+  },
+  "paths": [
+    "/.env",
+    "/.git/config",
+    "/server-status",
+    "/actuator/env",
+    "/swagger.json",
+    "/openapi.json"
+  ],
+  "status": [200],
+  "matchers": [
+    {
+      "part": "all",
+      "words": ["password", "secret", "repositoryformatversion", "swagger", "openapi", "Environment"]
+    }
+  ],
+  "extractors": [
+    {
+      "regex": [
+        "(?i)(api[_-]?key|secret|password)[=:][^\\n\\r]{4,120}",
+        "repositoryformatversion\\s*=\\s*0"
+      ]
+    }
+  ],
+  "stop_at_first_match": false
+}

@@ -1,0 +1,37 @@
+{
+  "id": "api-exposures",
+  "info": {
+    "name": "API Metadata And Console Exposure",
+    "severity": "MED"
+  },
+  "paths": [
+    "/swagger-ui/",
+    "/swagger-ui/index.html",
+    "/api-docs",
+    "/v2/api-docs",
+    "/v3/api-docs",
+    "/openapi.json",
+    "/openapi.yaml",
+    "/graphql",
+    "/graphiql",
+    "/playground",
+    "/api/graphql",
+    "/.well-known/openid-configuration"
+  ],
+  "status": [200, 401, 403],
+  "matchers": [
+    {
+      "part": "all",
+      "words": ["swagger", "openapi", "graphql", "introspection", "issuer", "authorization_endpoint"]
+    }
+  ],
+  "extractors": [
+    {
+      "regex": [
+        "(?i)(swagger-ui|openapi|graphql|authorization_endpoint|token_endpoint)",
+        "(?i)query\\s+IntrospectionQuery"
+      ]
+    }
+  ],
+  "stop_at_first_match": false
+}

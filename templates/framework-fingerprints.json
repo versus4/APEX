@@ -1,0 +1,37 @@
+{
+  "id": "framework-fingerprints",
+  "info": {
+    "name": "Framework Debug And Fingerprint Exposure",
+    "severity": "MED"
+  },
+  "paths": [
+    "/_next/static/",
+    "/_next/data/build-id/index.json",
+    "/__nuxt/",
+    "/_nuxt/",
+    "/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php",
+    "/laravel.log",
+    "/storage/logs/laravel.log",
+    "/_profiler/phpinfo",
+    "/_debug_toolbar/",
+    "/django-admin/",
+    "/wp-json/",
+    "/xmlrpc.php"
+  ],
+  "status": [200, 401, 403, 405],
+  "matchers": [
+    {
+      "part": "all",
+      "words": ["next", "nuxt", "laravel", "django", "wordpress", "phpunit", "debug toolbar"]
+    }
+  ],
+  "extractors": [
+    {
+      "regex": [
+        "(?i)(next-data|__nuxt|laravel|django|wordpress|phpunit|debug toolbar)",
+        "(?i)(APP_KEY|APP_DEBUG|DJANGO_SETTINGS_MODULE)"
+      ]
+    }
+  ],
+  "stop_at_first_match": false
+}

@@ -1,0 +1,23 @@
+{
+  "id": "panel-fingerprints",
+  "info": {
+    "name": "Admin and Debug Panel Fingerprints",
+    "severity": "MED"
+  },
+  "paths": [
+    "/admin",
+    "/dashboard",
+    "/debug",
+    "/phpinfo.php",
+    "/wp-admin/",
+    "/login"
+  ],
+  "status": [200, 401, 403],
+  "matchers": [
+    {
+      "part": "all",
+      "words": ["admin", "dashboard", "phpinfo", "wordpress", "login", "debug"]
+    }
+  ],
+  "stop_at_first_match": false
+}

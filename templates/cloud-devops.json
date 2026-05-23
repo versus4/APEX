@@ -1,0 +1,40 @@
+{
+  "id": "cloud-devops",
+  "info": {
+    "name": "Cloud And DevOps Console Exposure",
+    "severity": "HIGH"
+  },
+  "paths": [
+    "/jenkins/",
+    "/grafana/",
+    "/prometheus/",
+    "/metrics",
+    "/-/metrics",
+    "/debug/pprof/",
+    "/actuator",
+    "/actuator/env",
+    "/actuator/heapdump",
+    "/v2/",
+    "/v2/_catalog",
+    "/k8s/",
+    "/api/v1/namespaces",
+    "/.dockercfg",
+    "/docker-compose.yml"
+  ],
+  "status": [200, 401, 403],
+  "matchers": [
+    {
+      "part": "all",
+      "words": ["jenkins", "grafana", "prometheus", "repositories", "heapdump", "kubernetes", "docker"]
+    }
+  ],
+  "extractors": [
+    {
+      "regex": [
+        "(?i)(x-jenkins|grafana|prometheus|docker-distribution-api-version|kubernetes)",
+        "(?i)(DB_PASSWORD|AWS_ACCESS_KEY_ID|SPRING_DATASOURCE_PASSWORD)"
+      ]
+    }
+  ],
+  "stop_at_first_match": false
+}
