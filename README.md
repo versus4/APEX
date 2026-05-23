@@ -130,11 +130,3 @@ python Scanner.py --audit-scanner --no-proxy --no-prompt
 python Scanner.py --module-self-test --no-proxy --no-prompt
 ```
 
-## Release Notes
-
-Before publishing:
-
-- Remove generated output and cache folders.
-- Run the development checks above.
-- Confirm no private targets, customer data, proxy lists, cookies, tokens, or reports are staged.
-- Keep scanner usage framed around authorized testing.
